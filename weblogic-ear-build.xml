@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="weblogic-ear-build" basedir="." default="build.weblogic.ear">
+
+	<property name="eartmp" value="${basedir}/target/ear-artifacts-for-weblogic-tmp" />
+
+	<target name="build.weblogic.ear" depends="init">
+
+		<unwar src="${basedir}/target/websocketTest.war" dest="${eartmp}" />
+
+		<move todir="${eartmp}/APP-INF">
+
+			<fileset dir="${eartmp}/WEB-INF" />
+
+		</move>
+
+		<delete>
+
+			<fileset dir="${basedir}/target">
+
+				<include name="websocketTest.ear" />
+
+			</fileset>
+
+		</delete>
+
+		<ear appxml="${basedir}/src/main/resources/ear-artifacts-for-weblogic/META-INF/application.xml" destfile="${basedir}/target/websocketTest.ear">
+
+			<fileset dir="${basedir}/src/main/resources/ear-artifacts-for-weblogic">
+
+				<include name="META-INF/weblogic-application.xml" />
+				<include name="META-INF/MANIFEST.MF" />
+
+			</fileset>
+
+			<fileset dir="${eartmp}">
+
+				<include name="APP-INF/**/*.jar" />
+
+			</fileset>
+
+			<fileset dir="${basedir}/target">
+
+				<include name="websocketTest.war" />
+
+			</fileset>
+
+		</ear>
+
+		<delete dir="${eartmp}" />
+
+	</target>
+
+	<target name="init">
+
+		<delete dir="${eartmp}" />
+		<mkdir dir="${eartmp}" />
+
+	</target>
+
+</project>
