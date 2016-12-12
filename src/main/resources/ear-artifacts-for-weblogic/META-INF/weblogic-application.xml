@@ -26,7 +26,7 @@
 		<!--<resource-name>javax.faces.*</resource-name>-->
 		<!--<resource-name>com.sun.faces.*</resource-name>-->
 		<!--<resource-name>com.bea.faces.*</resource-name>-->
-		<resource-name>META-INF/services/javax.servlet.ServletContainerInitializer</resource-name>
+		<!--<resource-name>META-INF/services/javax.servlet.ServletContainerInitializer</resource-name>-->
 		<!--<resource-name>META-INF/service/com.sun.faces.spi.FacesConfigResourceProvider</resource-name>-->
 	</prefer-application-resources>
 
